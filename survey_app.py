@@ -95,7 +95,7 @@ if st.session_state.submitted:
     if st.button("🔙 Go to Home"):
         st.session_state.step = 1
         st.session_state.submitted = False
-        st.experimental_rerun()
+        st.rerun()
     st.stop()
 
 st.subheader("Survey Questions")
@@ -111,6 +111,7 @@ if st.session_state.step == 1:
 
     if st.button("Next"):
         st.session_state.step = 2
+        st.rerun()
 
 # Step 2 Questions
 elif st.session_state.step == 2:
@@ -147,6 +148,8 @@ elif st.session_state.step == 2:
                     df_combined = pd.concat([df_existing, df_new], ignore_index=True)
                     df_combined.to_excel(file_path, index=False)
                     st.session_state.submitted = True
+                    st.experimental_rerun()
             else:
                 df_new.to_excel(file_path, index=False)
                 st.session_state.submitted = True
+                st.rerun()
