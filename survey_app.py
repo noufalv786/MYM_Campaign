@@ -72,22 +72,42 @@ sub_zone_map = {
 # Display sub-zone field only after a zone is selected
 if main_zone and main_zone in sub_zone_map:
     sub_zone = st.selectbox(f"Select a sub-zone in {main_zone}", sub_zone_map[main_zone])
+    st.session_state.sub_zone = sub_zone  # ✅ Store in session
     st.success(f"You selected: {main_zone} > {sub_zone}")
 
 # Store answers in session state
 if "answers" not in st.session_state:
     st.session_state.answers = {}
+if "submitted" not in st.session_state:
+    st.session_state.submitted = False
+# ✅ Move this block up here
+if st.session_state.submitted:
+    st.markdown("## 🎉 Thank You for Your Feedback!")
+    st.markdown("""
+    ---
+    ### Your response has been recorded successfully.
+    
+    We appreciate your valuable time and input.  
+    Your responses will help us better understand and support the community.
+    
+    _You may now close this tab or return to the home page._
+    """)
+    if st.button("🔙 Go to Home"):
+        st.session_state.step = 1
+        st.session_state.submitted = False
+        st.experimental_rerun()
+    st.stop()
 
 st.subheader("Survey Questions")
 
 # Step 1 Questions
 if st.session_state.step == 1:
     st.header("ഭാഗം 1")
-    st.session_state.answers["Q1"] = st.radio("1. സൗദിയിൽ നിങ്ങൾ കുടുംബത്തോടൊപ്പമാണോ താമസിക്കുന്നത്?", ["Yes", "No", "Maybe"])
-    st.session_state.answers["Q2"] = st.radio("2. നിങ്ങളുടെ പ്രിയപ്പെട്ടവരുമായി ( നേരിൽ അല്ലെങ്കിൽ ഓൺലൈൻ വഴി) ദിവസവും എത്ര തവണ നിങ്ങൾ കമ്മ്യൂണിക്കേഷൻ നടത്താറുണ്ട് ?", ["Multiple Times", "One Time", "No"])
-    st.session_state.answers["Q3"] = st.radio("3. ജോലി- കുടുംബ ജീവിതത്തിലെ സമതുലനത്തിൽ നിങ്ങൾ എത്രത്തോളം തൃപ്തരാണ് ?", ["Very Satisfied", "Satisfied", "Neutral", "Dissatisfied", "Very Dissatisfied"])
-    st.session_state.answers["Q4"] = st.radio("4. നിങ്ങൾക്ക് ജോലി സ്ഥലത്ത് മതിയായ പരിഗണനയും ആദരവും ലഭിക്കുന്നുണ്ടോ?", ["No", "Yes", "Maybe"])
-    st.session_state.answers["Q5"] = st.radio("5. പ്രവാസത്തിൽ നിങ്ങൾ ആത്മീയമായും മതപരമായും തൃപ്തരാണോ ?", ["Yes", "No", "Maybe"])
+    st.session_state.answers["FAMILY"] = st.radio("1. സൗദിയിൽ നിങ്ങൾ കുടുംബത്തോടൊപ്പമാണോ താമസിക്കുന്നത്?", ["Yes", "No", "Maybe"])
+    st.session_state.answers["COMMUNICATION"] = st.radio("2. നിങ്ങളുടെ പ്രിയപ്പെട്ടവരുമായി ( നേരിൽ അല്ലെങ്കിൽ ഓൺലൈൻ വഴി) ദിവസവും എത്ര തവണ നിങ്ങൾ കമ്മ്യൂണിക്കേഷൻ നടത്താറുണ്ട് ?", ["Multiple Times", "One Time", "No"])
+    st.session_state.answers["WORK/FAMILY BALANCE"] = st.radio("3. ജോലി- കുടുംബ ജീവിതത്തിലെ സമതുലനത്തിൽ നിങ്ങൾ എത്രത്തോളം തൃപ്തരാണ് ?", ["Very Satisfied", "Satisfied", "Neutral", "Dissatisfied", "Very Dissatisfied"])
+    st.session_state.answers["WORK-RESPECT"] = st.radio("4. നിങ്ങൾക്ക് ജോലി സ്ഥലത്ത് മതിയായ പരിഗണനയും ആദരവും ലഭിക്കുന്നുണ്ടോ?", ["No", "Yes", "Maybe"])
+    st.session_state.answers["MORALIS ASPECT"] = st.radio("5. പ്രവാസത്തിൽ നിങ്ങൾ ആത്മീയമായും മതപരമായും തൃപ്തരാണോ ?", ["Yes", "No", "Maybe"])
 
     if st.button("Next"):
         st.session_state.step = 2
@@ -95,16 +115,16 @@ if st.session_state.step == 1:
 # Step 2 Questions
 elif st.session_state.step == 2:
     st.header("ഭാഗം 2")
-    st.session_state.answers["Q6"] = st.radio("6. കേരളീയ പരമ്പരാഗത ആഘോഷരീതികളിൽ പങ്ക് കൊള്ളാൻ നിങ്ങൾക്ക് അവസരങ്ങൾ ലഭിക്കുന്നുണ്ടോ?", ["Yes", "No", "Maybe"])
-    st.session_state.answers["Q7"] = st.radio("7. പ്രവാസലോകത്ത് നിങ്ങളുടെ ശാരീരിക ആരോഗ്യത്തിലും ആരോഗ്യപരിപാലനത്തിന് ലഭ്യമാകുന്ന സൗകര്യങ്ങളിലും നിങ്ങൾ തൃപ്തരാണോ?", ["Yes", "No", "Maybe"])
-    st.session_state.answers["Q8"] = st.radio("8. നിങ്ങൾ ജോലി കഴിഞ്ഞുള്ള ഒഴിവ് സമയം വ്യായാമത്തിന് വേണ്ടി മാറ്റി വെക്കാറുണ്ടോ ?", ["Yes", "No", "Maybe"])
-    st.session_state.answers["Q9"] = st.radio("9. നിങ്ങളുടെ വ്യക്തിഗത ലക്ഷ്യങ്ങളിലേക്കും സ്വപ്നങ്ങളിലേക്കും നടന്നടുക്കാൻ പ്രവാസ ജീവിതത്തിൽ കഴിയുന്നുണ്ടോ?", ["Yes", "No", "Maybe"])
-    st.session_state.answers["Q10"] = st.radio("10. നിങ്ങൾ സമൂഹത്തിൽ ഇടപെടുന്ന ആളാണോ?", ["Yes", "No", "Maybe"])
+    st.session_state.answers["KERALA FESTIVAl "] = st.radio("6. കേരളീയ പരമ്പരാഗത ആഘോഷരീതികളിൽ പങ്ക് കൊള്ളാൻ നിങ്ങൾക്ക് അവസരങ്ങൾ ലഭിക്കുന്നുണ്ടോ?", ["Yes", "No", "Maybe"])
+    st.session_state.answers["HEALTH"] = st.radio("7. പ്രവാസലോകത്ത് നിങ്ങളുടെ ശാരീരിക ആരോഗ്യത്തിലും ആരോഗ്യപരിപാലനത്തിന് ലഭ്യമാകുന്ന സൗകര്യങ്ങളിലും നിങ്ങൾ തൃപ്തരാണോ?", ["Yes", "No", "Maybe"])
+    st.session_state.answers["EXERCISE"] = st.radio("8. നിങ്ങൾ ജോലി കഴിഞ്ഞുള്ള ഒഴിവ് സമയം വ്യായാമത്തിന് വേണ്ടി മാറ്റി വെക്കാറുണ്ടോ ?", ["Yes", "No", "Maybe"])
+    st.session_state.answers["AIM/DREAM"] = st.radio("9. നിങ്ങളുടെ വ്യക്തിഗത ലക്ഷ്യങ്ങളിലേക്കും സ്വപ്നങ്ങളിലേക്കും നടന്നടുക്കാൻ പ്രവാസ ജീവിതത്തിൽ കഴിയുന്നുണ്ടോ?", ["Yes", "No", "Maybe"])
+    st.session_state.answers["AS A SOCIAL WORKER"] = st.radio("10. നിങ്ങൾ സമൂഹത്തിൽ ഇടപെടുന്ന ആളാണോ?", ["Yes", "No", "Maybe"])
 
     if st.button("✅ Submit Survey"):
         if not name or not email or not phone:
             st.warning("Please fill in all your personal information.")
-        elif not main_zone or (main_zone in sub_zone_map and "sub_zone" not in locals()):
+        elif not main_zone or (main_zone in sub_zone_map and "sub_zone" not in st.session_state):
             st.warning("Please select a zone and sub-zone.")
         else:
             data = {
@@ -112,7 +132,7 @@ elif st.session_state.step == 2:
                 "Email": email,
                 "Phone": phone,
                 "Zone": main_zone,
-                "Sub-Zone": sub_zone if main_zone in sub_zone_map else "",
+                "Sector": st.session_state.sub_zone if main_zone in sub_zone_map else "",
                 **st.session_state.answers
             }
 
@@ -126,7 +146,7 @@ elif st.session_state.step == 2:
                 else:
                     df_combined = pd.concat([df_existing, df_new], ignore_index=True)
                     df_combined.to_excel(file_path, index=False)
-                    st.success("🎉 Thank you for your feedback!")
+                    st.session_state.submitted = True
             else:
                 df_new.to_excel(file_path, index=False)
-                st.success("🎉 Thank you for your feedback!")
+                st.session_state.submitted = True
