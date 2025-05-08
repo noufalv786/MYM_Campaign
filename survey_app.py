@@ -44,24 +44,29 @@ st.markdown("""
 st.image("top_header.png", use_container_width =True)  # You can also use use_column_width=True if you want full width
 st.image("banner.png", use_container_width =True)
 
-st.markdown('<div class="title">📋 MYM Survey Form</div>', unsafe_allow_html=True)
+st.markdown('<div class="title">📋 MYM - Happiness Survey Form</div>', unsafe_allow_html=True)
 
 st.markdown("---")
 st.subheader("Your Information")
 name = st.text_input("Full Name")
 email = st.text_input("Email")
 phone = st.text_input("Phone Number")
-zones = ["", "Riyadh North", "Riyadh city", "Dammam", "Jubail"]
+zones = ["ALJOUF", "RIYADH NORTH", "RIYADH CITY", "DAMMAM", "JUBAIL","ALHASA","ALKHOBAR","ALQASEEM","HAIL","HAFAL AL BATHIN"]
 main_zone = st.selectbox("Choose your Zone", zones)
 # Initialize session state
 if "step" not in st.session_state:
     st.session_state.step = 1
 # Sub-zones for each main zone
 sub_zone_map = {
-    "Riyadh North": ["Malaz", "Sulai", "Aqeeq", "Mursalath", "Olaya", "Muhammdiya", "Roudha", "Qurthuba"],
-    "Riyadh city": ["Batha", "Nasiriyah", "Shifa", "Manfouha"],
-    "Dammam": ["Al Faisaliah", "Al Shati", "Al Mazrouiah"],
-    "Jubail": ["Fanateer", "Huwailat", "Al Jalmudah"]
+    "RIYADH NORTH": ["MURSALATH", "OLAYA", "AQEEQ", "MALAZ", "MUHAMMEDIYA", "ROUDHA", "SULAI", "QURTHUBA"],
+    "RIYADH CITY": ["AZEEZIYA", "KHALIDIYA", "KHARJ", "MUZAHMIYAH","NEW SANAYYA","BADIYA","BATHA WEST","BATHA","SHIFA","SHUMESI"],
+    "DAMMAM": ["TOYOTA", "AL BADIYA", "CITY","MADEENATHUL UMMAL","NINETY ONE","QATIF","RAHEEMA","AL RABIEA"],
+    "JUBAIL": ["AL DANAH", "AL MIRQAB", "TOWN"],
+    "ALHASA": ["HOFUF", "KHALIDIYYA", "MUBARAZ"],
+    "ALKHOBAR": ["THUQBA CITY", "SHAMALIYA", "BAYONIYA"],
+    "ALQASEEM": ["BURAIDA", "UNAIZA"],
+    "HAIL": ["CITY", "NUGRA"],
+   
 }
 
 # Display sub-zone field only after a zone is selected
