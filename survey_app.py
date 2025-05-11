@@ -72,7 +72,7 @@ if main_zone and main_zone in sub_zone_map:
 
 # Thank You Page
 if st.session_state.submitted:
-    st.markdown("## 🎉 Thank You for Your Feedback!")
+    st.markdown("## 🎉 Thank You for particiapte in MYM-Survey!")
     st.markdown("""
         ---
         ### Your response has been recorded successfully.
@@ -114,16 +114,18 @@ elif st.session_state.step == 2:
         elif not main_zone or (main_zone in sub_zone_map and "sub_zone" not in st.session_state):
             st.warning("Please select a zone and sub-zone.")
         else:
-            try:
-                sheet = get_google_sheet()
-                existing_emails = sheet.col_values(2)  # Assuming Email is 2nd column
-                if email in existing_emails:
-                    st.error("You have already submitted this survey.")
-                else:
-                    row = [name, email, phone, main_zone, st.session_state.sub_zone] + list(st.session_state.answers.values())
-                    sheet.append_row(row)
-                    st.success("✅ Survey submitted successfully!")
-                    st.session_state.submitted = True
-                    st.rerun()
-            except Exception as e:
-                st.error(f"An error occurred: {e}")
+            with st.spinner("Submitting your response..."):
+                try:
+                    sheet = get_google_sheet()
+                    existing_emails = sheet.col_values(2)  # Assuming Email is 2nd column
+                    if email in existing_emails:
+                        st.error("You have already submitted this survey.")
+                    else:
+                        row = [name, email, phone, main_zone, st.session_state.sub_zone] + list(st.session_state.answers.values())
+                        sheet.append_row(row)
+                        st.success("✅ Survey submitted successfully!")
+                        st.session_state.submitted = True
+                        st.rerun()
+                except Exception as e:
+                    st.error(f"An error occurred: {e}")
+
