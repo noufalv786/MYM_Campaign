@@ -107,6 +107,11 @@ elif st.session_state.step == 2:
     st.session_state.answers["EXERCISE"] = st.radio("8. വ്യായാമത്തിന് സമയം മാറ്റിവെക്കാറുണ്ടോ?", ["Yes", "No", "Maybe"])
     st.session_state.answers["AIM/DREAM"] = st.radio("9. സ്വപ്നങ്ങൾ നേടിയെടുക്കാൻ ശ്രമിക്കാറുണ്ടോ ?", ["Yes", "No", "Maybe"])
     st.session_state.answers["AS A SOCIAL WORKER"] = st.radio("10. സമൂഹത്തിൽ പങ്കാളിയാകുന്നുണ്ടോ?", ["Yes", "No", "Maybe"])
+    # New text area field for elaboration
+    st.session_state.answers["COMMENT"] = st.text_area(
+        "11.നിങ്ങളുടെ ക്ഷേമം മെച്ചപ്പെടുത്താൻ RSC പോലുള്ള  സംഘടനകൾക്ക് എന്താണ് ചെയ്യാൻ കഴിയുക?:",
+        key="social_worker_comment"
+    )
 
     if st.button("✅ Submit Survey"):
         if not name or not email or not phone:
