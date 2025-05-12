@@ -91,10 +91,10 @@ st.subheader("Survey Questions")
 if st.session_state.step == 1:
     st.header("ഭാഗം 1")
     st.session_state.answers["FAMILY"] = st.radio("1. സൗദിയിൽ നിങ്ങൾ കുടുംബത്തോടൊപ്പമാണോ താമസിക്കുന്നത്?", ["Yes", "No", "Maybe"])
-    st.session_state.answers["COMMUNICATION"] = st.radio("2. നിങ്ങളുടെ പ്രിയപ്പെട്ടവരുമായി എത്ര തവണ കമ്മ്യൂണിക്കേറ്റ് ചെയ്യുന്നു?", ["Multiple Times", "One Time", "No"])
-    st.session_state.answers["WORK/FAMILY BALANCE"] = st.radio("3. ജോലി-കുടുംബ സമതുലനം എത്രത്തോളം തൃപ്തമാണോ?", ["Very Satisfied", "Satisfied", "Neutral", "Dissatisfied", "Very Dissatisfied"])
-    st.session_state.answers["WORK-RESPECT"] = st.radio("4. ജോലിയിടത്ത് ആദരവുണ്ടോ?", ["No", "Yes", "Maybe"])
-    st.session_state.answers["MORALIS ASPECT"] = st.radio("5. ആത്മീയ-മതപരമായി തൃപ്തമാണോ?", ["Yes", "No", "Maybe"])
+    st.session_state.answers["COMMUNICATION"] = st.radio("2.നിങ്ങളുടെ പ്രിയപ്പെട്ടവരുമായി ദിവസത്തിൽ എത്ര തവണ കമ്മ്യൂണിക്കേറ്റ് ചെയ്യുന്നു?", ["Multiple Times", "Often","One Time", "No"])
+    st.session_state.answers["WORK/FAMILY BALANCE"] = st.radio("3.ജോലി-കുടുംബ സമതുലനം എത്രത്തോളം തൃപ്തമാണ് ?", ["Very Satisfied", "Satisfied", "Neutral", "Dissatisfied", "Very Dissatisfied"])
+    st.session_state.answers["WORK-RESPECT"] = st.radio("4. നിങ്ങളുടെ ജോലി പരിസരം തൃപ്തമാണോ ?", ["No", "Yes", "Maybe"])
+    st.session_state.answers["MORALIS ASPECT"] = st.radio("5. ആത്മീയ-മതപരമായി തൃപ്തമാണോ?", ["Yes", "No", "Often"])
 
     if st.button("Next"):
         st.session_state.step = 2
@@ -102,10 +102,10 @@ if st.session_state.step == 1:
 
 elif st.session_state.step == 2:
     st.header("ഭാഗം 2")
-    st.session_state.answers["KERALA FESTIVAL"] = st.radio("6. കേരള ആഘോഷങ്ങളിൽ പങ്കുചേരാൻ കഴിയുന്നു?", ["Yes", "No", "Maybe"])
-    st.session_state.answers["HEALTH"] = st.radio("7. ആരോഗ്യസൗകര്യങ്ങളിൽ തൃപ്തമാണോ?", ["Yes", "No", "Maybe"])
+    st.session_state.answers["KERALA FESTIVAL"] = st.radio("6. നാട്ടിലെ ആഘോഷങ്ങളിൽ ഭാഗവാക്കാറുണ്ടോ ?", ["Yes", "No", "Maybe"])
+    st.session_state.answers["HEALTH"] = st.radio("7. ആരോഗൃപരമായി  തൃപ്തരാണോ?", ["Yes", "No", "Maybe"])
     st.session_state.answers["EXERCISE"] = st.radio("8. വ്യായാമത്തിന് സമയം മാറ്റിവെക്കാറുണ്ടോ?", ["Yes", "No", "Maybe"])
-    st.session_state.answers["AIM/DREAM"] = st.radio("9. സ്വപ്നങ്ങൾ നേരിടാൻ കഴിയുന്നു?", ["Yes", "No", "Maybe"])
+    st.session_state.answers["AIM/DREAM"] = st.radio("9. സ്വപ്നങ്ങൾ നേടിയെടുക്കാൻ ശ്രമിക്കാറുണ്ടോ ?", ["Yes", "No", "Maybe"])
     st.session_state.answers["AS A SOCIAL WORKER"] = st.radio("10. സമൂഹത്തിൽ പങ്കാളിയാകുന്നുണ്ടോ?", ["Yes", "No", "Maybe"])
 
     if st.button("✅ Submit Survey"):
