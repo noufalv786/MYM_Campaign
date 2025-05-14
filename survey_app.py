@@ -64,7 +64,7 @@ if "answers" not in st.session_state:
     st.session_state.answers = {}
 if "submitted" not in st.session_state:
     st.session_state.submitted = False
-
+st.session_state.sub_zone = ""
 if main_zone and main_zone in sub_zone_map:
     sub_zone = st.selectbox(f"Select a sub-zone in {main_zone}", sub_zone_map[main_zone])
     st.session_state.sub_zone = sub_zone
