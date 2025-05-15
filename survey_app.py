@@ -114,7 +114,7 @@ if st.session_state.step == 1:
     st.header("ഭാഗം 1")
     st.session_state.answers["FAMILY"] = st.radio("1.സൗദിയിൽ നിങ്ങൾ കുടുംബത്തോടൊപ്പമാണോ താമസിക്കുന്നത്?", ["Yes", "No", "Sometimes"])
     st.session_state.answers["COMMUNICATION"] = st.radio("2.നിങ്ങളുടെ പ്രിയപ്പെട്ടവരുമായി ദിവസത്തിൽ എത്ര തവണ കമ്മ്യൂണിക്കേറ്റ് ചെയ്യുന്നു?", ["Multiple Times", "Often","One Time", "No"])
-    st.session_state.answers["WORK/FAMILY BALANCE"] = st.radio("3.ജോലി-കുടുംബ സമതുലനം എത്രത്തോളം തൃപ്തമാണ് ?", ["Very Satisfied", "Satisfied", "Neutral", "Unsatisfied", "Very Dissatisfied"])
+    st.session_state.answers["WORK/FAMILY BALANCE"] = st.radio("3.ജോലി-കുടുംബ സമതുലനം എത്രത്തോളം തൃപ്തമാണ് ?", ["Very Satisfied", "Satisfied", "Neutral", "Unsatisfied"])
     st.session_state.answers["WORK-RESPECT"] = st.radio("4.നിങ്ങളുടെ ജോലി പരിസരം തൃപ്തമാണോ ?", ["No", "Yes"])
     st.session_state.answers["MORALIS ASPECT"] = st.radio("5.നിങ്ങളുടെ ഒഴിവ് സമയം ആത്മീയ-മതപരമായി ഉപയോഗപ്പെടുത്താൻ സാധിക്കുന്നുണ്ടോ?", ["Yes", "No"])
 
@@ -125,13 +125,13 @@ if st.session_state.step == 1:
 elif st.session_state.step == 2:
     st.header("ഭാഗം 2")
     st.session_state.answers["KERALA FESTIVAL"] = st.radio("6.പ്രവാസ ലോകത്ത് നാട്ടിൽ നടക്കുന്നത് പോലെയുള്ള ഇസ്ലാമിക ആഘോഷങ്ങളിൽ ഭാഗവാക്കാറുണ്ടോ ?", ["Yes", "No", "Sometimes"])
-    st.session_state.answers["HEALTH"] = st.radio("7.നിങ്ങളുടെ മാനസിക-ശാരീരിക ആരോഗ്യത്തെ എങ്ങിനെ നോക്കിക്കാണുന്ന?", ["Satisfied", "Need Improvement","Not satisfied"])
+    st.session_state.answers["HEALTH"] = st.radio("7.നിങ്ങളുടെ മാനസിക-ശാരീരിക ആരോഗ്യത്തെ എങ്ങിനെ നോക്കിക്കാണുന്നു?", ["Satisfied", "Need Improvement","Not satisfied"])
     st.session_state.answers["EXERCISE"] = st.radio("8.വ്യായാമത്തിന് സമയം മാറ്റിവെക്കാറുണ്ടോ?", ["Yes", "No", "Sometimes"])
     st.session_state.answers["AIM/DREAM"] = st.radio("9.സ്വപ്നങ്ങൾ നേടിയെടുക്കാൻ ശ്രമിക്കാറുണ്ടോ ?", ["Yes", "No"])
-    st.session_state.answers["AS A SOCIAL WORKER"] = st.radio("10.സമൂഹത്തിൽ പങ്കാളിയാകുന്നുണ്ടോ?", ["Yes", "No", "Sometimes"])
+    st.session_state.answers["AS A SOCIAL WORKER"] = st.radio("10.സാമൂഹിക പ്രവർത്തനത്തിൽ പങ്കാളിയാകുന്നുണ്ടോ?", ["Yes", "No", "Sometimes"])
     # New text area field for elaboration
     st.session_state.answers["COMMENT"] = st.text_area(
-        "11.നിങ്ങളുടെ ക്ഷേമം മെച്ചപ്പെടുത്താൻ RSC പോലുള്ള  സംഘടനകൾക്ക് എന്താണ് ചെയ്യാൻ കഴിയുക?:",
+        "11.നിങ്ങളുടെ ശാരീരിക-മാനസിക ക്ഷേമം മെച്ചപ്പെടുത്താൻ RSC പോലുള്ള  സംഘടനകൾക്ക് എന്താണ് ചെയ്യാൻ കഴിയുക?:",
         key="social_worker_comment"
     )
 
