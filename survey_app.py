@@ -131,7 +131,7 @@ elif st.session_state.step == 2:
     st.session_state.answers["AS A SOCIAL WORKER"] = st.radio("10.സാമൂഹിക പ്രവർത്തനത്തിൽ പങ്കാളിയാകുന്നുണ്ടോ?", ["Yes", "No", "Sometimes"])
     # New text area field for elaboration
     st.session_state.answers["COMMENT"] = st.text_area(
-        "11.നിങ്ങളുടെ ശാരീരിക-മാനസിക ക്ഷേമം മെച്ചപ്പെടുത്താൻ RSC പോലുള്ള  സംഘടനകൾക്ക് എന്താണ് ചെയ്യാൻ കഴിയുക?:",
+        "11.നിങ്ങളുടെ ശാരീരിക-മാനസിക ക്ഷേമം മെച്ചപ്പെടുത്താൻ RSC പോലുള്ള സംഘടനകളിൽ നിന്നും നിങ്ങൾ പ്രതീക്ഷിക്കുന്നത്?:",
         key="social_worker_comment"
     )
 
