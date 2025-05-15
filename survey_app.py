@@ -94,7 +94,7 @@ if main_zone and main_zone in sub_zone_map:
 
 # Thank You Page
 if st.session_state.submitted:
-    st.markdown("## 🎉 Thank You for particiapte in MYM-Survey!")
+    st.markdown("## 🎉 Thank You for participate in MYM-Survey!")
     st.markdown("""
         ---
         ### Your response has been recorded successfully.
