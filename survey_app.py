@@ -3,7 +3,7 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
 # Configure Streamlit page
-st.set_page_config(page_title="Survey App", layout="centered")
+st.set_page_config(page_title="Survey App-RSC Saudi East", layout="centered")
 
 # Load Google Sheet
 def get_google_sheet():
@@ -35,7 +35,29 @@ st.markdown("""
 # Banner and Title
 st.image("top_header.png", use_container_width=True)
 st.image("banner.png", use_container_width=True)
-st.markdown('<div class="title">📋 MYM - Happiness Survey Form</div>', unsafe_allow_html=True)
+st.markdown("""
+    <style>
+        .title, .subtitle {
+            text-align: center;
+        }
+        .title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #4CAF50;
+            padding: 10px 0 0 0;
+        }
+        .subtitle {
+            font-size: 20px;
+            color: #555;
+            margin-top: 5px;
+            margin-bottom: 20px;
+            font-weight:bold;
+        }
+    </style>
+    <div class="title">📋 MYM - Happiness Survey Form</div>
+    <div class="subtitle">RSC SAUDI EAST</div>
+""", unsafe_allow_html=True)
+
 st.markdown("---")
 
 # Personal Information
@@ -90,11 +112,11 @@ st.subheader("Survey Questions")
 
 if st.session_state.step == 1:
     st.header("ഭാഗം 1")
-    st.session_state.answers["FAMILY"] = st.radio("1. സൗദിയിൽ നിങ്ങൾ കുടുംബത്തോടൊപ്പമാണോ താമസിക്കുന്നത്?", ["Yes", "No", "Maybe"])
+    st.session_state.answers["FAMILY"] = st.radio("1.സൗദിയിൽ നിങ്ങൾ കുടുംബത്തോടൊപ്പമാണോ താമസിക്കുന്നത്?", ["Yes", "No", "Sometimes"])
     st.session_state.answers["COMMUNICATION"] = st.radio("2.നിങ്ങളുടെ പ്രിയപ്പെട്ടവരുമായി ദിവസത്തിൽ എത്ര തവണ കമ്മ്യൂണിക്കേറ്റ് ചെയ്യുന്നു?", ["Multiple Times", "Often","One Time", "No"])
-    st.session_state.answers["WORK/FAMILY BALANCE"] = st.radio("3.ജോലി-കുടുംബ സമതുലനം എത്രത്തോളം തൃപ്തമാണ് ?", ["Very Satisfied", "Satisfied", "Neutral", "Dissatisfied", "Very Dissatisfied"])
-    st.session_state.answers["WORK-RESPECT"] = st.radio("4. നിങ്ങളുടെ ജോലി പരിസരം തൃപ്തമാണോ ?", ["No", "Yes", "Maybe"])
-    st.session_state.answers["MORALIS ASPECT"] = st.radio("5. ആത്മീയ-മതപരമായി തൃപ്തമാണോ?", ["Yes", "No", "Often"])
+    st.session_state.answers["WORK/FAMILY BALANCE"] = st.radio("3.ജോലി-കുടുംബ സമതുലനം എത്രത്തോളം തൃപ്തമാണ് ?", ["Very Satisfied", "Satisfied", "Neutral", "Unsatisfied", "Very Dissatisfied"])
+    st.session_state.answers["WORK-RESPECT"] = st.radio("4.നിങ്ങളുടെ ജോലി പരിസരം തൃപ്തമാണോ ?", ["No", "Yes"])
+    st.session_state.answers["MORALIS ASPECT"] = st.radio("5.ആത്മീയ-മതപരമായി തൃപ്തമാണോ?", ["Yes", "No"])
 
     if st.button("Next"):
         st.session_state.step = 2
@@ -102,11 +124,11 @@ if st.session_state.step == 1:
 
 elif st.session_state.step == 2:
     st.header("ഭാഗം 2")
-    st.session_state.answers["KERALA FESTIVAL"] = st.radio("6. നാട്ടിലെ ആഘോഷങ്ങളിൽ ഭാഗവാക്കാറുണ്ടോ ?", ["Yes", "No", "Maybe"])
-    st.session_state.answers["HEALTH"] = st.radio("7. ആരോഗൃപരമായി  തൃപ്തരാണോ?", ["Yes", "No", "Maybe"])
-    st.session_state.answers["EXERCISE"] = st.radio("8. വ്യായാമത്തിന് സമയം മാറ്റിവെക്കാറുണ്ടോ?", ["Yes", "No", "Maybe"])
-    st.session_state.answers["AIM/DREAM"] = st.radio("9. സ്വപ്നങ്ങൾ നേടിയെടുക്കാൻ ശ്രമിക്കാറുണ്ടോ ?", ["Yes", "No", "Maybe"])
-    st.session_state.answers["AS A SOCIAL WORKER"] = st.radio("10. സമൂഹത്തിൽ പങ്കാളിയാകുന്നുണ്ടോ?", ["Yes", "No", "Maybe"])
+    st.session_state.answers["KERALA FESTIVAL"] = st.radio("6.നാട്ടിലെ ആഘോഷങ്ങളിൽ ഭാഗവാക്കാറുണ്ടോ ?", ["Yes", "No", "Sometimes"])
+    st.session_state.answers["HEALTH"] = st.radio("7.ആരോഗൃപരമായി  തൃപ്തരാണോ?", ["Yes", "No"])
+    st.session_state.answers["EXERCISE"] = st.radio("8.വ്യായാമത്തിന് സമയം മാറ്റിവെക്കാറുണ്ടോ?", ["Yes", "No", "Sometimes"])
+    st.session_state.answers["AIM/DREAM"] = st.radio("9.സ്വപ്നങ്ങൾ നേടിയെടുക്കാൻ ശ്രമിക്കാറുണ്ടോ ?", ["Yes", "No"])
+    st.session_state.answers["AS A SOCIAL WORKER"] = st.radio("10.സമൂഹത്തിൽ പങ്കാളിയാകുന്നുണ്ടോ?", ["Yes", "No", "Sometimes"])
     # New text area field for elaboration
     st.session_state.answers["COMMENT"] = st.text_area(
         "11.നിങ്ങളുടെ ക്ഷേമം മെച്ചപ്പെടുത്താൻ RSC പോലുള്ള  സംഘടനകൾക്ക് എന്താണ് ചെയ്യാൻ കഴിയുക?:",
